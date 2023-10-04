@@ -10,24 +10,20 @@ A simple Python package for scraping detailed product information from the Nike 
 - [License](#license)
 
 ## Installation
+Make sure you have created a virtual environment before installing the package.
 
-To use this package, you need to install it in your Python environment. You can do this using pip:
+To use this package, you need to install it in your Python virtual environment. You can do this using pip:
 
 ```bash
 pip install -U nikescraperbykejora
 
 ```
+You also need to install the following dependencies:
 
-Make sure you have created a virtual environment before installing the package.
-
-This package has the following dependencies:
-
-pandas>=2.1.1;
-httpx>=0.25.0;
-playwright>=1.38.0;
-selectolax>=0.3.16;
-
-These dependencies will be automatically installed when you install 'nikescraperbykejora'.
+- pandas>=2.1.1;
+- httpx>=0.25.0;
+- playwright>=1.38.0;
+- selectolax>=0.3.16;
 
 ## Usage
 
