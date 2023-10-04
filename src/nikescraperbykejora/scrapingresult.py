@@ -1,5 +1,4 @@
 # scraping_result
-import os
 import pandas as pd
 from src.nikescraperbykejora.linksscraper import NikeSpider
 from src.nikescraperbykejora.datascraper import NikeProductScraper
@@ -52,18 +51,12 @@ class ProductScraperHandler:
         product_data = await DataHandler.access_and_collect_data(product_scraper)
         product_data_list = [product_data]
 
-        result_folder = os.path.join(os.path.dirname(os.path.abspath(__file__)), "../..", "result")
         try:
-            if not os.path.exists(result_folder):
-                os.makedirs(result_folder)
-
-            txt_file_path = os.path.join(result_folder, txt_file_name)
-
-            with open(txt_file_path, 'w', encoding='utf-8') as txt_file:
+            with open(txt_file_name, 'w', encoding='utf-8') as txt_file:
                 for item in product_data_list:
                     txt_file.write(f"{item}\n")
 
-            print(f"Scraping product completed. Results saved in {txt_file_path}")
+            print(f"Scraping product completed.")
 
         except Exception as e:
             print(f"An error occurred while saving the data: {e}")
@@ -92,14 +85,9 @@ class ProductScraperHandler:
                     product_data_list.append(product_data)
                     # Save data to CSV after each successful scrape
                     df = pd.DataFrame(product_data_list)
-                    result_folder = os.path.join(os.path.dirname(os.path.abspath(__file__)), "../..", "result")
 
                     try:
-                        if not os.path.exists(result_folder):
-                            os.makedirs(result_folder)
-
-                        csv_file_path = os.path.join(result_folder, csv_file_name)
-                        df.to_csv(csv_file_path, index=False, encoding='utf-8')
+                        df.to_csv(csv_file_name, index=False, encoding='utf-8')
                         print(f"Scraping No. {index} completed.")
 
                     except Exception as e:
@@ -114,15 +102,10 @@ class ProductScraperHandler:
 
         # Save the final data to CSV
         df = pd.DataFrame(product_data_list)
-        result_folder = os.path.join(os.path.dirname(os.path.abspath(__file__)), "../..", "result")
 
         try:
-            if not os.path.exists(result_folder):
-                os.makedirs(result_folder)
-
-            csv_file_path = os.path.join(result_folder, csv_file_name)
-            df.to_csv(csv_file_path, index=False, encoding='utf-8')
-            print(f"Scraping all products completed. Results saved in {csv_file_path}")
+            df.to_csv(csv_file_name, index=False, encoding='utf-8')
+            print(f"Scraping all products completed. Results saved in {csv_file_name}")
 
         except Exception as e:
             print(f"An error occurred while saving the data: {e}")
