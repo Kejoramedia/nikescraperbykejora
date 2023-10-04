@@ -1,7 +1,7 @@
 # scraping_result
 import pandas as pd
-from src.nikescraperbykejora.linksscraper import NikeSpider
-from src.nikescraperbykejora.datascraper import NikeProductScraper
+from nikescraperbykejora.linksscraper import NikeSpider
+from nikescraperbykejora.datascraper import NikeProductScraper
 
 
 class DataHandler:
