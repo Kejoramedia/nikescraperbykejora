@@ -17,6 +17,8 @@ To use this package, you need to install it in your Python environment. You can 
 pip install -U nikescraperbykejora
 ```
 
+Make sure you have created a virtual environment before installing the package.
+
 This package has the following dependencies:
 
 pandas>=2.1.1
@@ -157,7 +159,15 @@ async def main():
     product_count = 14
     timeout_seconds = 10 
 
-    await ProductScraperHandler.multi_product(target_url_multi, csv_file_name, product_count, timeout_seconds)
+    # Get the project directory
+    project_directory = os.path.dirname(os.path.abspath(__file__))
+
+    os.chdir(project_directory)
+
+    # Specify the full path to the result file
+    result_file_path = os.path.join(project_directory, "result", csv_file_name)
+
+    await ProductScraperHandler.multi_product(target_url_multi, result_file_path, product_count, timeout_seconds)
 
 if __name__ == "__main__":
     asyncio.run(main())
